@@ -11,4 +11,8 @@ public class MenuItem {
         this.price = price;
         
     }
+    
+    public MenuItem() {
+        this(-1, "invalid", 0);
+    }
 }
