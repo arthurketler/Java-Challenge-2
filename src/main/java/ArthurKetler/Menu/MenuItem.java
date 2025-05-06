@@ -5,6 +5,7 @@ public class MenuItem {
     String name;
     double price;
     
+    
     MenuItem(int ID, String name, double price) {
         this.ID = ID;
         this.name = name;
@@ -15,4 +16,10 @@ public class MenuItem {
     public MenuItem() {
         this(-1, "invalid", 0);
     }
+    
+    public int getID() {
+        return ID;
+    }
+    
+    
 }

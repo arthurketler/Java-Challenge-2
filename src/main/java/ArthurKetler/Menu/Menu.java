@@ -10,7 +10,7 @@ public class Menu {
     ArrayList<Side> sides;
     
     
-    public Menu(Object object) {
+    public Menu() {
         // 3 funcoes de ArrayList de Plates Drinks e Sides
         this.plates = MenuItems(API.class, Plate.class);
         this.drinks = MenuItems(API.class, Drink.class);
@@ -18,31 +18,40 @@ public class Menu {
         
     }
     
-    private <A, T extends MenuItem> ArrayList<T> MenuItems(Class<A> reference, Class<T> type) {
+    public ArrayList<Plate> getPlate(){
+        return plates;
+    }
+    
+    private <A, T extends MenuItem> ArrayList<T> MenuItems(Class<A> apiReference, Class<T> type) {
         ArrayList<T> list = new ArrayList<>();
         
         int length = 0;
         
         try {
-            Class<?> clazz = reference;
-            
-            Method method = clazz.getMethod("getTable");
-            
-            length = method.invoke(type);
+            Method method = apiReference.getMethod("getTable", Class.class);
+            length = (int) method.invoke(null, type);
             
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
+            System.out.println("Método de API não encontrado.");;
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            System.out.println("Método de API não acessivel pelo package.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Parâmetros de método de API incorretos.");
+        } catch (InvocationTargetException e) {
+            System.out.println("Método com excessão interna.");
+//            Throwable causa = e.getCause(); // exceção original lançada
+//            causa.printStackTrace();
+        } catch (SecurityException e) {
+            System.out.println("Erro com o gerenciador de segurança do Java.");
         }
         
         
-        for (int i = 0; i < ; i++) {
+        for (int i = 0; i < length; i++) {
             list.add(ArthurKetler.Menu.API.getTable(type, i));
         }
         
         return list;
     }
+    
+    
 }

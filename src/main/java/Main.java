@@ -1,8 +1,23 @@
 import ArthurKetler.List.NewList;
+import ArthurKetler.Menu.Menu;
+import ArthurKetler.Order.OrderItem;
+import ArthurKetler.Order.PlateOrderItem;
+import ArthurKetler.Order.SideOrderItem;
 
 public class Main {
     public static void main(String[] args) {
-        NewList order = new NewList();
+        Menu menu = new Menu(); // instancia o menu como objeto de referência
+        
+        // instância de ordem de pedido
+        NewList orderList = new NewList();
+        orderList.add(new PlateOrderItem(1));
+        orderList.add(new PlateOrderItem(1));
+        orderList.add(new PlateOrderItem(2));
+        orderList.add(new SideOrderItem(1));
+        
+        for (OrderItem element : orderList) {
+            element.toString();
+        }
         
         
         

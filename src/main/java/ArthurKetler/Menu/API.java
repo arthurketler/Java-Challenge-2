@@ -34,7 +34,7 @@ public class API {
         return switch (type.getSimpleName()) {
             case "Plate" -> API.plateTable.size();
             case "Drink" -> API.drinkTable.size();
-            case "Size" -> API.sideTable.size();
+            case "Side" -> API.sideTable.size();
             
             default -> -1;
         };
