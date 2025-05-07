@@ -18,10 +18,7 @@ public class Menu {
         
     }
     
-    public ArrayList<Plate> getPlate(){
-        return plates;
-    }
-    
+    // metodo que preenche o menu a partir da API
     private <A, T extends MenuItem> ArrayList<T> MenuItems(Class<A> apiReference, Class<T> type) {
         ArrayList<T> list = new ArrayList<>();
         
@@ -51,6 +48,10 @@ public class Menu {
         }
         
         return list;
+    }
+    
+    public MenuItem getItem(int index) {
+        return this.plates.get(index);
     }
     
     

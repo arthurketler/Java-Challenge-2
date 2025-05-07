@@ -10,14 +10,15 @@ public class Main {
         
         // instância de ordem de pedido
         NewList orderList = new NewList();
-        orderList.add(new PlateOrderItem(1));
-        orderList.add(new PlateOrderItem(1));
-        orderList.add(new PlateOrderItem(2));
-        orderList.add(new SideOrderItem(1));
+        orderList.add(new PlateOrderItem(0, menu));
+        orderList.add(new PlateOrderItem(0, menu));
+        orderList.add(new SideOrderItem(0, menu));
         
-        for (OrderItem element : orderList) {
-            element.toString();
-        }
+        
+        
+        
+        
+        
         
         
         

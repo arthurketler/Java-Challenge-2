@@ -8,8 +8,10 @@ public class NewList extends ArrayList<OrderItem> {
     
     @Override
     public boolean add(OrderItem item) {
-        if (this.contains(item)) {
-            item.addAmmount();
+        int index = this.newListContains(item);
+        
+        if (index != -1) {
+            this.get(index).addAmmount();
             return true;
         }
         
@@ -17,13 +19,14 @@ public class NewList extends ArrayList<OrderItem> {
     }
     
     
-    public boolean newListContains(OrderItem item) {
-        for (OrderItem existingItem : this) {
-            //if (existingItem.getID() == item.getID() || existingItem.getClass() == item.getClass()) return true;
-            if (existingItem.getID() == item.getID()) return true;
+    public int newListContains(OrderItem item) {
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).isEqual(item)) {
+                return i;
+            };
         }
         
-        return false;
+        return -1;
     }
     
     

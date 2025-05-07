@@ -1,9 +1,11 @@
 package ArthurKetler.Order;
 
+import ArthurKetler.Menu.Menu;
+
 public class SideOrderItem extends OrderItem {
     
     
-    public SideOrderItem(int ID) {
-        super(ID);
+    public SideOrderItem(int ID, Menu menu) {
+        super(ID, menu);
     }
 }

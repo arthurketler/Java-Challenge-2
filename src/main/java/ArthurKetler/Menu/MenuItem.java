@@ -18,7 +18,15 @@ public class MenuItem {
     }
     
     public int getID() {
-        return ID;
+        return this.ID;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public double getPrice() {
+        return this.price;
     }
     
     
