@@ -1,20 +1,25 @@
 package ArthurKetler.Menu;
 
+import ArthurKetler.Order.DrinkOrderItem;
+import ArthurKetler.Order.OrderItem;
+import ArthurKetler.Order.PlateOrderItem;
+import ArthurKetler.Order.SideOrderItem;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Menu {
-    ArrayList<Plate> plates;
-    ArrayList<Drink> drinks;
-    ArrayList<Side> sides;
+    ArrayList<PlateMenuItem> plates;
+    ArrayList<DrinkMenuItem> drinks;
+    ArrayList<SideMenuItem> sides;
     
     
     public Menu() {
         // 3 funcoes de ArrayList de Plates Drinks e Sides
-        this.plates = MenuItems(API.class, Plate.class);
-        this.drinks = MenuItems(API.class, Drink.class);
-        this.sides = MenuItems(API.class, Side.class);
+        this.plates = MenuItems(API.class, PlateMenuItem.class);
+        this.drinks = MenuItems(API.class, DrinkMenuItem.class);
+        this.sides = MenuItems(API.class, SideMenuItem.class);
         
     }
     
@@ -50,8 +55,62 @@ public class Menu {
         return list;
     }
     
-    public MenuItem getItem(int index) {
-        return this.plates.get(index);
+    public MenuItem getItem(OrderItem item, int index) {
+        if (item instanceof PlateOrderItem) {
+            return this.plates.get(index);
+        } else if (item instanceof DrinkOrderItem) {
+            return this.drinks.get(index);
+        } else if (item instanceof SideOrderItem) {
+            return this.sides.get(index);
+        }
+        
+        return new MenuItem();
+    }
+    
+    public void list(Class<?> type) {
+        System.out.println("#".repeat(MenuItem.getPrintSize()));
+        
+        switch (type.getSimpleName()) {
+            case "PlateOrderItem":
+                for (int i = 0; i < plates.size(); i++) {
+                    System.out.println(plates.get(i).toString());
+                }
+                break;
+            case "DrinkOrderItem":
+                for (int i = 0; i < drinks.size(); i++) {
+                    System.out.println(drinks.get(i).toString());
+                }
+                break;
+            case "SideOrderItem":
+                for (int i = 0; i < sides.size(); i++) {
+                    System.out.println(sides.get(i).toString());
+                }
+                break;
+        }
+        
+        System.out.println("#".repeat(MenuItem.getPrintSize()));
+    }
+    
+    public boolean contains(Class<?> type, byte ID) {
+        switch (type.getSimpleName()) {
+            case "PlateOrderItem":
+                for (MenuItem item : plates) {
+                    if (item.getID() == ID) return true;
+                }
+                break;
+            case "DrinkOrderItem":
+                for (MenuItem item : drinks) {
+                    if (item.getID() == ID) return true;
+                }
+                break;
+            case "SideOrderItem":
+                for (MenuItem item : sides) {
+                    if (item.getID() == ID) return true;
+                }
+                break;
+        }
+        
+        return false;
     }
     
     

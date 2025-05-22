@@ -13,6 +13,10 @@ public class OrderItem {
         this.menu = menu;
     }
     
+    public OrderItem() {
+        this(-1, null);
+    }
+    
     public int getAmmount() {
         return this.ammount;
     }
@@ -38,15 +42,15 @@ public class OrderItem {
         
         return String.format("Tipo: %s, nome:%s, ID:%d, quantidade:%d, preco:%f, total:%f",
                 this.getClass().getSimpleName(),
-                this.menu.getPlate(this.ID).getName(),
-                this.menu.getPlate(this.ID).getID(),
+                this.menu.getItem(this, this.ID).getName(),
+                this.menu.getItem(this, this.ID).getID(),
                 this.ammount,
-                this.menu.getPlate(this.ID).getPrice(),
+                this.menu.getItem(this, this.ID).getPrice(),
                 this.getTotal());
     }
     
     public double getTotal() {
-        return this.ammount * this.menu.getPlate(this.ID).getPrice();
+        return this.ammount * this.menu.getItem(this, this.ID).getPrice();
     }
 }
 
