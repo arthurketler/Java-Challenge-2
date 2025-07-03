@@ -72,19 +72,13 @@ public class Menu {
         
         switch (type.getSimpleName()) {
             case "PlateOrderItem":
-                for (int i = 0; i < plates.size(); i++) {
-                    System.out.println(plates.get(i).toString());
-                }
+                for (PlateMenuItem plate : plates) System.out.println(plate.toString());
                 break;
             case "DrinkOrderItem":
-                for (int i = 0; i < drinks.size(); i++) {
-                    System.out.println(drinks.get(i).toString());
-                }
+                for (DrinkMenuItem drink : drinks) System.out.println(drink.toString());
                 break;
             case "SideOrderItem":
-                for (int i = 0; i < sides.size(); i++) {
-                    System.out.println(sides.get(i).toString());
-                }
+                for (SideMenuItem side : sides) System.out.println(side.toString());
                 break;
         }
         

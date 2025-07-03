@@ -7,6 +7,12 @@ public class OrderItem {
     private int ammount;
     private Menu menu;
     
+    private static int printSize = 50;
+    
+    public static int getPrintSize() {
+        return printSize;
+    }
+    
     public OrderItem(int ID, Menu menu) {
         this.ID = ID;
         this.ammount = 1;
@@ -34,23 +40,27 @@ public class OrderItem {
     }
     
     public boolean isEqual(OrderItem item) {
-        return this.getClass() == item.getClass() && this.ID == item.ID;
+        return this.getClass() == item.getClass() && this.ID == item.ID && this.menu == item.menu;
     }
     
-    public String toString() {
-        
-        
-        return String.format("Tipo: %s, nome:%s, ID:%d, quantidade:%d, preco:%f, total:%f",
-                this.getClass().getSimpleName(),
+    public String toString(int i) {
+        String line = String.format("%02d||%s|%s????%d||$%05.2f||$%05.2f",
+                i,
+                this.getTipo(),
                 this.menu.getItem(this, this.ID).getName(),
-                this.menu.getItem(this, this.ID).getID(),
                 this.ammount,
                 this.menu.getItem(this, this.ID).getPrice(),
                 this.getTotal());
+        
+        return line.replace("????", "-".repeat(printSize - line.length()));
     }
     
     public double getTotal() {
         return this.ammount * this.menu.getItem(this, this.ID).getPrice();
+    }
+    
+    public String getTipo() {
+        return "";
     }
 }
 

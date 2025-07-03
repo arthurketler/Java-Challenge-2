@@ -8,4 +8,9 @@ public class SideOrderItem extends OrderItem {
     public SideOrderItem(int ID, Menu menu) {
         super(ID, menu);
     }
+    
+    @Override
+    public String getTipo() {
+        return "Acompanhamento";
+    }
 }

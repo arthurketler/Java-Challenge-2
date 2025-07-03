@@ -10,6 +10,11 @@ public class DrinkOrderItem extends OrderItem {
     }
     
     @Override
+    public String getTipo() {
+        return "Bebida";
+    }
+    
+    @Override
     public boolean isEqual(OrderItem item) {
         if (!super.isEqual(item)) return false;
         

@@ -1,5 +1,6 @@
 package ArthurKetler.List;
 
+import ArthurKetler.Menu.MenuItem;
 import ArthurKetler.Order.OrderItem;
 import java.util.ArrayList;
 
@@ -27,6 +28,18 @@ public class NewList extends ArrayList<OrderItem> {
         }
         
         return -1;
+    }
+    
+    public void listItems() {
+        String header = "TIPO|NOME????QUAN||PRECO-||TOTAL "; // espaco depois do total obrigatorio pois a contagem da errado sem
+        System.out.println(header.replace("????", "-".repeat(OrderItem.getPrintSize() - header.length())));
+        
+        if (this.size() == 0) System.out.println("Empty list");
+        
+        for (int i = 0; i < this.size(); i++) {
+            System.out.println(this.get(i).toString(i + 1));
+        }
+        
     }
     
     

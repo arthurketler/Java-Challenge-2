@@ -27,8 +27,9 @@ public class Main {
                 System.out.println("Invalid, try again.");
                 continue;
             }
-            char entry =  entryString.charAt(0);
             
+            //if valid gets the char
+            char entry =  entryString.charAt(0);
             entryString = null;
             
             // in case exit
@@ -60,9 +61,10 @@ public class Main {
                     menu.list(typeClass);
                     
                     // recebe a entrada do item
-                    System.out.print("Enter the item you want:");
+                    System.out.println("Enter the item you want:");
                     byte ID = sc.nextByte();
                     sc.nextLine();
+                    ID--; // Pois o index do menu comeca em 0 nao em 1
                     
                     // confere se o item existe
                     if (!menu.contains(typeClass, ID)) {
@@ -80,20 +82,41 @@ public class Main {
                     
                     orderList.add(item);
                     item = null;
+                    break;
                     
                 }
             }
             
+            // in case remove
+            if (entry == '3') {
+                while (true) {
+                    System.out.println("Select the item for deletion:");
+                    // lista os itens
+                    orderList.listItems();
+                    
+                    // entrada pra deleção de itens
+                    byte ID = sc.nextByte();
+                    sc.nextLine();
+                    ID--; // Pois o index do menu comeca em 0 nao em 1
+                    
+                    // checa existencia do item
+                    try {
+                        orderList.get(ID);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Invalid");
+                        continue;
+                    }
+                    
+                    // deletion
+                    orderList.remove(ID);
+                }
+            }
             
-            System.out.println();
+            
+            
+            
+            
         }
-        
-        
-        
-        
-        
-        
-        
     }
     
     public void line() {

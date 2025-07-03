@@ -37,14 +37,8 @@ public class MenuItem {
     
     @Override
     public String toString() {
-        return String.format("#%d//%s%s$%2.2f", this.ID, this.name, this.line(), this.price);
-    }
-    
-    private String line() {
-        int length = printSize - String.format("#%d//%s$%2.2f", this.ID, this.name, this.price).length();
+        int line = printSize - String.format("#%d//%s$%5.2f", this.ID + 1, this.name, this.price).length();
         
-        return "-".repeat(length);
+        return String.format("#%d//%s%s$%5.2f", this.ID + 1, this.name, "-".repeat(line), this.price);
     }
-    
-    
 }
